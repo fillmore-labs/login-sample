@@ -1,0 +1,9 @@
+---
+builds:
+  - id: login-sample
+    env:
+      - CGO_ENABLED=0
+defaultPlatforms:
+  - linux/amd64
+  - linux/arm64
+defaultBaseImage: gcr.io/distroless/static:nonroot

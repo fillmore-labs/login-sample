@@ -1,0 +1,11 @@
+---
+steps:
+  - label: ':go: Build'
+    commands:
+      - go build
+    branches: "!main"
+
+  - label: ':go: & :kubernetes: Build & Deploy'
+    commands:
+      - ./deploy.sh
+    branches: "main"

@@ -1,0 +1,49 @@
+= OAuth Login Sample
+:Author:    Oliver Eikemeier
+:Email:     <eikemeier@fillmore-labs.com>
+:Date:      2023-05
+:Revision:  v0.1
+:toc: macro
+
+image:https://badge.buildkite.com/07b78f5bce141778254e21bac50edb376be3742c0da6b97b58.svg?branch=main[title="Buildkite build status",link=https://buildkite.com/fillmore-labs/login-sample]
+
+toc::[]
+
+== Purpose
+
+A sample knative service to demonstrate logging in via an OAuth provider.
+
+== Prerequisites
+
+You will need:
+
+- A Kubernetes cluster with Knative installed.  See
+"`https://knative.dev/docs/install/yaml-install/serving/install-serving-with-yaml/[Installing Knative Serving using YAML files]`".
+- An OAuth provider (i.e. https://auth0.com/signup[Auth0]).
+- A container registry where your cluster can pull from (i.e. https://hub.docker.com[Docker Hub]).
+- https://go.dev[Go] to compile the program.
+- https://ko.build[Ko] to build containers.
+- https://github.com/mozilla/sops[sops] for secret handling.
+
+== Running
+
+=== Locally
+
+[source,shell]
+export KO_DATA_PATH=kodata/
+export OAUTH_DOMAIN=fillmore-labs.eu.auth0.com
+export OAUTH_CALLBACK_URL=http://127.0.0.1:8080/callback
+export OAUTH_CLIENT_ID=...
+export OAUTH_CLIENT_SECRET=...
+go run main.go
+
+=== Production
+
+[source,shell]
+----
+./deploy.sh
+----
+
+== Developing
+
+This code is based on https://github.com/auth0-samples/auth0-golang-web-app[Auth0 - Go Web App].

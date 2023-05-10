@@ -1,0 +1,19 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+configurations:
+  - konfig.yaml
+namespace: login-sample # must be synchronized with OAUTH_CALLBACK_URL
+resources:
+  - namespace.yaml
+  - ../base
+configMapGenerator:
+  - name: login-sample-config
+    envs:
+      - config.env
+secretGenerator:
+  - name: login-sample-secrets
+    envs:
+      - secrets.env
+transformers:
+  - image.yaml
