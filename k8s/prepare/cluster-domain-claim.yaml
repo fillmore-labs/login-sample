@@ -1,0 +1,7 @@
+---
+apiVersion: networking.internal.knative.dev/v1alpha1
+kind: ClusterDomainClaim
+metadata:
+  name: login-sample.fillmore-labs.com
+spec:
+  namespace: login-sample

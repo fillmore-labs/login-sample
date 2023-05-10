@@ -1,0 +1,34 @@
+---
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: login-sample
+spec:
+  template:
+    spec:
+      containers:
+        - name: login-sample
+          image: login-sample-image
+          resources:
+            requests:
+              memory: 100Mi
+              cpu: 100m
+            limits:
+              memory: 400Mi
+              cpu: 300m
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: login-sample-config
+            - secretRef:
+                name: login-sample-secrets
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault

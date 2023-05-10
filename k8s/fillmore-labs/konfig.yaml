@@ -1,0 +1,19 @@
+---
+nameReference:
+  - kind: ConfigMap
+    version: v1
+    fieldSpecs:
+      - path: spec/template/spec/containers/envFrom/configMapRef/name
+        kind: Service
+        group: serving.knative.dev
+  - kind: Secret
+    version: v1
+    fieldSpecs:
+      - path: spec/template/spec/containers/envFrom/secretRef/name
+        kind: Service
+        group: serving.knative.dev
+namespace:
+  - kind: DomainMapping
+    group: serving.knative.dev
+    path: spec/ref/namespace
+    create: true

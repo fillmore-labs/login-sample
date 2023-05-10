@@ -1,0 +1,10 @@
+---
+apiVersion: serving.knative.dev/v1alpha1
+kind: DomainMapping
+metadata:
+  name: login-sample.fillmore-labs.com
+spec:
+  ref:
+    apiVersion: serving.knative.dev/v1
+    kind: Service
+    name: login-sample
