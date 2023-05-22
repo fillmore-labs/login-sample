@@ -3,12 +3,13 @@ package main
 import (
 	"context"
 	"log"
-	"login-sample/platform/authenticator"
-	"login-sample/platform/router"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"login-sample/platform/authenticator"
+	"login-sample/platform/router"
 
 	"github.com/gin-gonic/gin"
 )

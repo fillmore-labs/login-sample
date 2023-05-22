@@ -20,7 +20,7 @@ imageTag:
   digest: ${IMAGE#*@}
 _IMAGE
 
-sops -d k8s/$PROFILE//secrets.enc.env > k8s/$PROFILE/secrets.env
+sops -d k8s/$PROFILE/secrets.enc.env > k8s/$PROFILE/secrets.env
 
 kubectl apply -k k8s/$PROFILE
 
