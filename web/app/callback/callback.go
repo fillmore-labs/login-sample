@@ -5,8 +5,13 @@ import (
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"golang.org/x/oauth2"
 
 	"login-sample/platform/authenticator"
+)
+
+const (
+	codeVerifierKey = "code_verifier"
 )
 
 // Handler for our callback.
@@ -18,8 +23,13 @@ func Handler(auth *authenticator.Authenticator) gin.HandlerFunc {
 			return
 		}
 
+		verifier := session.Get("verifier").(string)
+		exchangeOptions := []oauth2.AuthCodeOption{
+			oauth2.SetAuthURLParam(codeVerifierKey, verifier),
+		}
+
 		// Exchange an authorization code for a token.
-		token, err := auth.Exchange(ctx.Request.Context(), ctx.Query("code"))
+		token, err := auth.Exchange(ctx.Request.Context(), ctx.Query("code"), exchangeOptions...)
 		if err != nil {
 			ctx.String(http.StatusUnauthorized, "Failed to convert an authorization code into a token.")
 			return

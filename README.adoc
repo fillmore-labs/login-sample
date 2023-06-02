@@ -30,12 +30,9 @@ You will need:
 === Locally
 
 [source,shell]
-export KO_DATA_PATH=kodata/
-export OAUTH_DOMAIN=fillmore-labs.eu.auth0.com
-export OAUTH_CALLBACK_URL=http://127.0.0.1:8080/callback
-export OAUTH_CLIENT_ID=...
-export OAUTH_CLIENT_SECRET=...
-go run main.go
+----
+./run.sh
+----
 
 === Production
 
@@ -47,3 +44,8 @@ go run main.go
 == Developing
 
 This code is based on https://github.com/auth0-samples/auth0-golang-web-app[Auth0 - Go Web App].
+
+== References
+
+- https://www.oauth.com/oauth2-servers/server-side-apps/[Server-Side Apps]
+- https://www.ietf.org/archive/id/draft-ietf-oauth-security-topics-22.html[OAuth 2.0 Security Best Current Practice]
