@@ -5,13 +5,9 @@ import (
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"golang.org/x/oauth2"
 
 	"login-sample/platform/authenticator"
-)
-
-const (
-	codeVerifierKey = "code_verifier"
+	"login-sample/web/app/pkce"
 )
 
 // Handler for our callback.
@@ -24,9 +20,7 @@ func Handler(auth *authenticator.Authenticator) gin.HandlerFunc {
 		}
 
 		verifier := session.Get("verifier").(string)
-		exchangeOptions := []oauth2.AuthCodeOption{
-			oauth2.SetAuthURLParam(codeVerifierKey, verifier),
-		}
+		exchangeOptions := pkce.ExchangeOptions(verifier)
 
 		// Exchange an authorization code for a token.
 		token, err := auth.Exchange(ctx.Request.Context(), ctx.Query("code"), exchangeOptions...)
