@@ -21,7 +21,7 @@ func Handler(auth *authenticator.Authenticator) gin.HandlerFunc {
 			return
 		}
 
-		verifier, err := pkce.NewVerifier(32)
+		verifier, err := pkce.RandomVerifier(32)
 		if err != nil {
 			ctx.String(http.StatusInternalServerError, err.Error())
 			return
@@ -36,8 +36,8 @@ func Handler(auth *authenticator.Authenticator) gin.HandlerFunc {
 			return
 		}
 
-		authCodeUrlOptions := pkce.AuthCodeOptions(verifier)
-		ctx.Redirect(http.StatusTemporaryRedirect, auth.AuthCodeURL(state, authCodeUrlOptions...))
+		authCodeOptions := pkce.Sha256Challenge(verifier)
+		ctx.Redirect(http.StatusTemporaryRedirect, auth.AuthCodeURL(state, authCodeOptions...))
 	}
 }
 

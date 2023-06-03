@@ -20,7 +20,7 @@ func Handler(auth *authenticator.Authenticator) gin.HandlerFunc {
 		}
 
 		verifier := session.Get("verifier").(string)
-		exchangeOptions := pkce.ExchangeOptions(verifier)
+		exchangeOptions := pkce.ExchangeVerifier(verifier)
 
 		// Exchange an authorization code for a token.
 		token, err := auth.Exchange(ctx.Request.Context(), ctx.Query("code"), exchangeOptions...)
