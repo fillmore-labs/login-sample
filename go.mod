@@ -2,7 +2,7 @@ module login-sample
 
 go 1.21
 
-toolchain go1.23.0
+toolchain go1.23.1
 
 require (
 	github.com/coreos/go-oidc/v3 v3.11.0
