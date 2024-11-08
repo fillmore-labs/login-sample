@@ -8,7 +8,7 @@ require (
 	github.com/coreos/go-oidc/v3 v3.11.0
 	github.com/gin-contrib/sessions v1.0.1
 	github.com/gin-gonic/gin v1.10.0
-	golang.org/x/oauth2 v0.23.0
+	golang.org/x/oauth2 v0.24.0
 )
 
 require (
