@@ -1,6 +1,6 @@
 module login-sample
 
-go 1.21
+go 1.23.0
 
 toolchain go1.23.4
 
@@ -8,7 +8,7 @@ require (
 	github.com/coreos/go-oidc/v3 v3.12.0
 	github.com/gin-contrib/sessions v1.0.2
 	github.com/gin-gonic/gin v1.10.0
-	golang.org/x/oauth2 v0.25.0
+	golang.org/x/oauth2 v0.30.0
 )
 
 require (
